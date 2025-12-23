@@ -1,24 +1,21 @@
 # Job Change Prediction using Machine Learning
 
-This project builds an end-to-end machine learning pipeline to predict whether
-a candidate is likely to change jobs based on demographic, education, and
-employment-related features.
+This project implements an end-to-end machine learning pipeline to predict whether a candidate is likely to change jobs based on demographic, education, and employment-related features.
 
-The goal is to understand which factors influence job mobility and to evaluate
-the performance of different machine learning models on structured data.
+The objective is to analyze factors influencing job mobility and to compare multiple machine learning models on an imbalanced classification task.
 
 ---
 
 ## Dataset
-The dataset contains anonymized candidate information including:
+The dataset contains anonymized candidate information, including:
+
 - Education level
 - Years of experience
 - Company size and type
 - Training hours
 - Gender and enrollment status
 
-The target variable indicates whether the candidate is actively looking for a
-new job.
+The target variable indicates whether a candidate is actively seeking a new job.
 
 ---
 
@@ -26,47 +23,38 @@ new job.
 - Python
 - pandas, NumPy
 - scikit-learn
-- Matplotlib / Seaborn
+- XGBoost
+- Matplotlib, Seaborn
 - Jupyter Notebook
 
 ---
 
 ## Project Workflow
-1. Data loading and inspection
-2. Data cleaning and handling missing values
-3. Encoding categorical features
-4. Feature scaling
-5. Model training and evaluation
-6. Prediction generation on unseen data
+1. Data loading and inspection  
+2. Missing value handling and preprocessing  
+3. Encoding categorical features  
+4. Train/validation split  
+5. Model training and evaluation  
+6. Model comparison  
+7. Final prediction generation using the best model  
 
 ---
 
 ## Models Used
-- Logistic Regression
-
-Model performance was evaluated using accuracy, precision, recall, and F1-score.
-
----
-
-## Results
-- The model achieved reasonable baseline performance on the validation set
-- Features related to experience, education, and company characteristics
-  showed strong influence on job change prediction
+- Logistic Regression (baseline)
+- Random Forest
+- XGBoost (final selected model)
 
 ---
 
-## Files in This Repository
-- `main.ipynb` – complete machine learning pipeline
-- `aug_train.csv` – training dataset
-- `aug_test.csv` – test dataset
-- `final_predictions.csv` – model predictions
-- `sample_submission.csv` – reference output format
+## Model Performance (Validation Set)
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|------|---------|----------|--------|----------|
+| Logistic Regression | 0.77 | 0.59 | 0.29 | 0.38 |
+| Random Forest | 0.78 | 0.57 | 0.50 | 0.53 |
+| **XGBoost** | **0.80** | **0.60** | **0.58** | **0.59** |
+
+**XGBoost achieved the best overall performance**, particularly improving recall and F1-score on the imbalanced dataset, and was selected as the final model.
 
 ---
-
-## How to Run
-1. Clone this repository
-2. Install required dependencies
-3. Open `main.ipynb` in Jupyter Notebook
-4. Run the cells sequentially
-
